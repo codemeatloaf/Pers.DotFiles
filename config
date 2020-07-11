@@ -43,6 +43,10 @@ floating_modifier $mod
 # start a terminal
 bindsym $mod+Return exec gnome-terminal
 
+# start a floating terminal
+bindsym $mod+shift+\ exec --no-startup-id gnome-terminal --role floating_term
+for_window [window_role=floating_term] floating enable
+
 # kill focused window
 bindsym $mod+shift+q kill
 
@@ -191,7 +195,12 @@ gaps outer 15
 for_window [class="^Vivaldi.*"] border pixel 0
 new_window 1pixel 
 
- client.focused #ffffff #ffffff #ffffff #ffffff     #ffffff
+client.focused #1C1C1C #1C1C1C #1C1C1C #1C1C1C     #1C1C1C
 
-# i3lock-fancy config
+# i3lock-fancy config https://github.com/meskarune/i3lock-fancy
 bindsym $mod+shift+x exec i3lock-fancy
+
+# i3-radius https://github.com/terroo/i3-radius
+smart_borders on
+smart_borders no_gaps
+border_radius 4
