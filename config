@@ -148,6 +148,8 @@ bindsym $mod+Shift+0 move container to workspace number $ws10
 # assigning applications to workspaces
 assign [class="Gnome-terminal"] $ws1
 assign [class="Google-chrome"] $ws2
+assign [class="Firefox"] $ws2
+assign [class="Pycharm-community"] $ws3
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
@@ -186,9 +188,11 @@ bindsym $mod+r mode "resize"
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 
-# custom commands
+# wallpapers
 
-exec --no-startup-id feh --bg-scale ~/pictures/Wallpapers/cyber-punk2.png
+exec --no-startup-id feh --bg-fill ~/pictures/Wallpapers/uncontrollable.jpg    
+
+# i3-gaps
 
 gaps inner 20
 gaps outer 15
@@ -203,4 +207,23 @@ bindsym $mod+shift+x exec i3lock-fancy
 # i3-radius https://github.com/terroo/i3-radius
 smart_borders on
 smart_borders no_gaps
-border_radius 4
+border_radius 10
+
+# border 
+for_window [class="^.*"] border pixel 0
+
+# auto alternating-layouts
+exec_always --no-startup-id ~/.config/i3/alternating_layouts.py
+
+# compton compositor
+Exec=sh -c “sleep 10;/usr/bin/compton&”
+
+
+# auto-start
+
+# firefox
+exec --no-startup-id firefox
+# gnome terminal
+exec --no-startup-id gnome-terminal
+# pycharm
+exec --no-startup-id jetbrains-pycharm-ce
